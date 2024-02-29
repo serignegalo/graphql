@@ -198,7 +198,7 @@ export default function Home() {
   return (
     <>
       {!jwt ? (
-        navigate( "/" ,{ replace: true })
+        navigate("/")
       ) : (
         <div className="font-mono bg-black h-[100%] text-white">
           <nav className="flex items-center h-[60px]">
