@@ -202,7 +202,7 @@ export default function Home() {
       ) : (
         <div className="font-mono bg-black h-[100%] text-white">
           <nav className="flex items-center h-[60px]">
-            <Navbar />
+            <Navbar userData={userData}/>
           </nav>
           <main className="bg-white-200 h-[100%]">
             {loading ? (
