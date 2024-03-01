@@ -37,13 +37,12 @@ export default function UserInfos({
             {" "}
             ID {userTransactionInfos.userId}
           </p>
-          <p className="bg-indigo-400 h-1 rounded my-4 w-64 text-center"></p>
           <div>
             <p className="text-xs text-indigo-400 mt-6 mb-1">first name</p>
             <p className="text-2xl">{infosUser.firstName}</p>
             <p className="bg-white h-[2px] rounded my-4 w-32 text-center"></p>
           </div>
-          <div>
+          <div className="flex flex-col items-center">
             <p className="text-xs text-indigo-400 mt-6 mb-1">last name</p>
             <p className="text-2xl uppercase">{infosUser.lastName}</p>
             <p className="bg-white h-[2px] rounded my-4 w-32 text-center"></p>
