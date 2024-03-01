@@ -10,7 +10,9 @@ const PieChart = ({ downTransaction, upTransaction }) => {
   }
 
   const upRatio = toPercent(upTransaction, total)
+  console.log(upTransaction);
   const downRatio = toPercent(downTransaction, total)
+  console.log(downTransaction);
   const data = [upRatio, downRatio]; // Données en pourcentage
   
   useEffect(() => {
@@ -64,8 +66,8 @@ const PieChart = ({ downTransaction, upTransaction }) => {
       <svg ref={svgRef}></svg>
       <div id="tooltip" style={{ position: 'absolute', visibility: 'hidden' }}></div>
       <div className="flex justify-between mb-4">
-        <span className="bg-green-500 w-32 rounded ml-4 text-center">up ratio</span>
-        <span className="bg-indigo-500 w-32 rounded mr-4 text-center">down ratio</span>
+        <span className="bg-green-500 w-32 rounded ml-4 text-center">down ratio</span>
+        <span className="bg-indigo-500 w-32 rounded mr-4 text-center">up ratio</span>
 
       </div>
     </div>
