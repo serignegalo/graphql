@@ -13,7 +13,7 @@ export default function Navbar( {firstName, lastName} ) {
     return;
   }
   return (
-    <div className="flex justify-between w-full">
+    <div className="flex justify-between text-white w-full bg-black">
       <div className="flex flex-row mx-[2vw] items-center">
         <img
           src="/logo.png"

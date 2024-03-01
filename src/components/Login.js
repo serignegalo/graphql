@@ -37,7 +37,7 @@ export default function Login() {
     const credentials = toBase64(encodeCredential);
     // const credentials = base64.encode(tab.join(":"));
 
-    console.log("validation passed");
+    console.log("--- validation passed ---");
 
     try {
       const response = await axios({

@@ -196,7 +196,6 @@ export default function Home() {
     fetchCurveData();
   }, [jwt, mapID]);
 
-  console.log("-------- ", userData);
   return (
     <>
       {jwt ? (
