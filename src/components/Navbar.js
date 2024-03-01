@@ -5,8 +5,7 @@ import { HiOutlineSquares2X2 } from "react-icons/hi2";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
-export default function Navbar({ userData }) {
-  console.log(userData);
+export default function Navbar( {firstName, lastName} ) {
   const navigate = useNavigate()
   function disconnect() {
     localStorage.removeItem("token");
@@ -37,7 +36,7 @@ export default function Navbar({ userData }) {
           <FaGitAlt size="20" />
           <div className="flex items-center mx-[2vw]">
             <HiOutlineSquares2X2 size="20" />
-            <p className="mx-[1vw]">{userData.firstName} {" "} {userData.lastName}</p>
+            <p className="mx-[1vw]"><span className="uppercase">{lastName}</span> {firstName}</p>
             <a href="/">
               <div
                 className="cursor-pointer hover:text-red-400 rounded"

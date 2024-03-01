@@ -1,12 +1,18 @@
 import React from "react";
-import base64 from "base-64";
+// import base64 from "base-64";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
   // Déclarer un state pour stocker la valeur saisie
-
+  function toBase64(str) {
+    let encoder = new TextEncoder();
+    let byteArray = encoder.encode(str);
+    let binary = "";
+    byteArray.forEach((x) => (binary += String.fromCharCode(x)));
+    return btoa(binary);
+  }
   let errorInput = "";
   async function onSubmit(event) {
     event.preventDefault();
@@ -27,8 +33,9 @@ export default function Login() {
       }
     }
 
-    const tab = [login, password];
-    const credentials = base64.encode(tab.join(":"));
+    const encodeCredential = `${login}:${password}`;
+    const credentials = toBase64(encodeCredential);
+    // const credentials = base64.encode(tab.join(":"));
 
     console.log("validation passed");
 
@@ -40,7 +47,6 @@ export default function Login() {
           Authorization: `Bearer ${credentials}`,
         },
       });
-
       localStorage.setItem("token", response.data);
       navigate("/home");
 

@@ -7,7 +7,7 @@ import CircleComponent from "./CircleComponent";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const jwt = localStorage.getItem("token");
   const [userData, setUserData] = useState({});
   const [userTransaction, setUserTransaction] = useState(null);
@@ -42,6 +42,7 @@ export default function Home() {
                   lastName
                   email
                   login
+                  campus
                 }
               }
             `,
@@ -195,53 +196,63 @@ export default function Home() {
     fetchCurveData();
   }, [jwt, mapID]);
 
+  console.log("-------- ", userData);
   return (
     <>
-      {!jwt ? (
-        navigate("/")
+      {jwt ? (
+        userData.campus ? (
+          <div className="font-mono bg-black h-[100%] text-white">
+            <nav className="flex items-center h-[60px]">
+              <Navbar firstName={userData.firstName} lastName={userData.lastName}/>
+            </nav>
+            <main className="bg-white-200 h-[100%]">
+              {loading ? (
+                <p>loading...</p>
+              ) : (
+                <>
+                  <UserInfos
+                    infosUser={userData}
+                    userTransaction={userTransaction.aggregate.sum.amount}
+                    userTransactionInfos={userTransactionInfos}
+                    curveData={curveData}
+                  />
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      flexWrap: "wrap",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div>
+                      <CurveComponent
+                        transactionsData={curveData}
+                        mapID={mapID}
+                        className="w-full max-w-60"
+                      />
+                    </div>
+                    <div className="bg-gray-200 h-[490px] flex items-center rounded-lg m-5">
+                      <CircleComponent
+                        upTransaction={upTransaction}
+                        downTransaction={downTransaction}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+            </main>
+          </div>
+        ) : (
+          <>
+            <Navbar />
+            <div className="bg-black h-[100vh] text-green-700 text-3xl">
+              No data for this user
+            </div>
+          </>
+        )
       ) : (
-        <div className="font-mono bg-black h-[100%] text-white">
-          <nav className="flex items-center h-[60px]">
-            <Navbar userData={userData}/>
-          </nav>
-          <main className="bg-white-200 h-[100%]">
-            {loading ? (
-              <p>loading...</p>
-            ) : (
-              <>
-                <UserInfos
-                  infosUser={userData}
-                  userTransaction={userTransaction.aggregate.sum.amount}
-                  userTransactionInfos={userTransactionInfos}
-                  curveData={curveData}
-                />
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    flexWrap: "wrap",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <div>
-                    <CurveComponent
-                      transactionsData={curveData}
-                      mapID={mapID}
-                      className="w-full max-w-60"
-                    />
-                  </div>
-                  <div className="bg-gray-200 h-[490px] flex items-center rounded-lg m-5">
-                    <CircleComponent
-                      upTransaction={upTransaction}
-                      downTransaction={downTransaction}
-                    />
-                  </div>
-                </div>
-              </>
-            )}
-          </main>
-        </div>
+        navigate("/", { replace: true })
       )}
       <footer className=""></footer>
     </>
