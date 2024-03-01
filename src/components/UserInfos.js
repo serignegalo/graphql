@@ -64,7 +64,7 @@ export default function UserInfos({
             <p className="text-md text-gray-400">current level</p>
             <FaCircle className="text-green-400" />
           </div>
-          <p className="text-9xl w-[80%] text-green-400">26</p>
+          <p className="text-9xl w-[80%] text-green-400">{infosUser.events[0].level}</p>
         </div>
       </div>
     </>

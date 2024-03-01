@@ -36,7 +36,10 @@ export default function Home() {
           {
             query: `
               {
-                user {
+                user{
+                  events(where: {eventId: {_eq: 56}}) {
+                    level
+                  }
                   id
                   firstName
                   lastName
@@ -55,6 +58,7 @@ export default function Home() {
         );
 
         setUserData(responseUser.data.data.user[0]);
+        console.log(responseUser.data.data.user[0].events[0].level);
 
         const responseTransaction = await axios.post(
           "https://learn.zone01dakar.sn/api/graphql-engine/v1/graphql",
