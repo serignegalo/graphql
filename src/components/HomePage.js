@@ -204,9 +204,12 @@ export default function Home() {
     <>
       {jwt ? (
         userData.campus ? (
-          <div className="font-mono bg-black h-[100%] text-white">
+          <div className="font-mono bg-white h-[100%] text-white">
             <nav className="flex items-center h-[60px]">
-              <Navbar firstName={userData.firstName} lastName={userData.lastName}/>
+              <Navbar
+                firstName={userData.firstName}
+                lastName={userData.lastName}
+              />
             </nav>
             <main className="bg-white-200 h-[100%]">
               {loading ? (
@@ -249,7 +252,7 @@ export default function Home() {
         ) : (
           <>
             <Navbar />
-            <div className="bg-black h-[100vh] text-green-700 text-3xl">
+            <div className="bg-white h-[100vh] text-green-700 text-3xl">
               No data for this user
             </div>
           </>

@@ -49,7 +49,6 @@ export default function Login() {
       });
       localStorage.setItem("token", response.data);
       navigate("/home");
-
     } catch (error) {
       errorInput = error.response.data.error;
       ajouterTexteAuParagraphe(errorInput, "errorTag");
@@ -65,26 +64,15 @@ export default function Login() {
   //   // setValeurSaisie('');
   // };
   return (
-    <div className="grid grid-cols-2 w-full p-[60px] content-center text-white bg-black h-[100%] absolute">
-      <div className="w-full">
-        <img src="/logo.png" alt="Zone01 Logo" width={100} height={100} />
-        <h1 className="text-5xl mt-8">
-          Bienvenue à{" "}
-          <span className="text-blue-500 font-semibold">Zone01</span> Dakar !
+    <div className="flex items-center justify-center w-full p-[60px] text-white bg-white h-[100vh]">
+      <div className="bg-white shadow-xl rounded p-4">
+        <h1 className="mb-4 text-center bg-blue-500 font-bold text-white">
+          LOGIN
         </h1>
-        <h2 className="text-2xl mt-8">
-          Vous accédez ici à notre plateforme <br /> d'apprentissage du code.
-        </h2>
-        <h3 className="text-sm mt-8">
-          Merci de communiquer votre <br /> username/email et votre mot de passe
-          <br /> pour avoir acces a votre compte
-        </h3>
-      </div>
-      <div className="w-full mt-64">
         <form
           onSubmit={onSubmit}
           action=""
-          className="flex flex-col justify-between"
+          className="flex flex-col justify-between "
         >
           <label id="email-label" htmlFor="email-field">
             Email or Username
@@ -95,7 +83,7 @@ export default function Login() {
             autoComplete="username"
             name="login"
             required=""
-            className="w-[70%] bg-black border-b-[1px] focus:outline-none border-gray-300 mb-8"
+            className="w-full border-b-[2px] focus:outline-none border-gray-300 mb-8"
           ></input>
           <label htmlFor="password-field">Password</label>
           <input
@@ -106,10 +94,10 @@ export default function Login() {
             autoComplete="new-password"
             title="Password does not meet the requirements"
             required=""
-            className="w-[70%] bg-black border-b-[1px] focus:outline-none border-gray-300"
+            className="w-full bg-white border-b-[2px] focus:outline-none border-gray-300"
           />
           <p className="text-red-600 text-sm mt-2" id="errorTag"></p>
-          <button className="bg-blue-500 w-[80px] h-[30px] mt-4">
+          <button className="bg-blue-500 w-[80px] h-[30px] mt-4 rounded-full text-white hover:bg-blue-600 font-medium">
             Sign in
           </button>
         </form>

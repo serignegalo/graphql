@@ -28,7 +28,7 @@ export default function UserInfos({
           justifyContent: "center",
         }}
       >
-        <div className="flex first flex-col items-center text-center bg-gray-900 row-span-2">
+        <div className="flex first flex-col items-center text-center bg-white shadow-xl text-black row-span-2">
           <p className="text-xs mt-6 mb-1">pseudo</p>
           <p className="text-3xl font-bold text-indigo-400 text-indigo-500">
             {infosUser.login}
@@ -53,13 +53,13 @@ export default function UserInfos({
             <p className="bg-white h-[2px] rounded my-4 w-32 text-center"></p>
           </div>
         </div>
-        <div className="flex flex-col items-center bg-gray-900 col-span-2 relative">
+        <div className="flex flex-col items-center bg-white shadow-xl text-black rounded col-span-2 relative">
           <p className="text-8xl absolute left-8 top-4">
             <span className="text-indigo-500">{totalXP}</span>kb
           </p>
           <p className="bg-gray-600 h-[2px] absolute top-[110px] rounded my-4 w-[90%] text-center"></p>
         </div>
-        <div className="flex items-center flex-col bg-gray-900">
+        <div className="flex items-center flex-col bg-white shadow-xl text-black rounded">
           <div className="flex flex-row items-center justify-between mt-6 mb-1 w-[80%]">
             <p className="text-md text-gray-400">current level</p>
             <FaCircle className="text-green-400" />

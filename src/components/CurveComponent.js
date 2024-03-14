@@ -57,12 +57,12 @@ const CurveComponent = ({ transactionsData, mapID }) => {
       .attr("r", 4)
       .attr("fill", "steelblue")
       .on("mouseover", function (event, d) {
-        const path = mapID.get(d.id); 
+        const path = mapID.get(d.id);
         if (path) {
-          const cleanPath = path.replace("/dakar/div-01/", ""); 
+          const cleanPath = path.replace("/dakar/div-01/", "");
 
           const tooltipHeight = tooltipRef.current.offsetHeight;
-          const xPosition = event.clientX + window.pageXOffset + 10; 
+          const xPosition = event.clientX + window.pageXOffset + 10;
           const yPosition = event.clientY + window.pageYOffset + 10;
           const windowHeight = window.innerHeight;
           const bottomSpace = windowHeight - event.clientY;
@@ -76,7 +76,7 @@ const CurveComponent = ({ transactionsData, mapID }) => {
           tooltipRef.current.style.left = `${xPosition}px`;
           tooltipRef.current.style.visibility = "visible";
           tooltipRef.current.style.color = "red";
-          tooltipRef.current.textContent = cleanPath; 
+          tooltipRef.current.textContent = cleanPath;
         }
         event.stopPropagation();
       })
@@ -101,7 +101,7 @@ const CurveComponent = ({ transactionsData, mapID }) => {
   }, [transactionsData, mapID]);
 
   return (
-    <div className="curve-container text-black">
+    <div className="curve-container text-white">
       <h3>Student Progression Curve </h3>
       <svg
         ref={svgRef}
